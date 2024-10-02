@@ -1,1 +1,193 @@
-gg
+local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/WRUyYTdY')))()
+local Window = OrionLib:MakeWindow({Name = "Natural Disaster Survival V1", HidePremium = false, SaveConfig = true, ConfigFolder = "Orion"})
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+OrionLib:MakeNotification({
+	Name = "THX FOR USING OUR SCRIPT!",
+	Content = "Join Discord server, there will be script news and more",
+	Image = "rbxassetid://4483345998",
+	Time = 31
+})
+
+local timeLabel = Tab:AddLabel("Real-life time will appear here")
+
+local function updateTime()
+	while true do
+		local realTime = os.date("!%Y-%m-%d %H:%M:%S")
+		local ms = tick() % 1 * 1000
+		local timeString = string.format("%s.%03d", realTime, math.floor(ms))
+		timeLabel:Set(timeString)
+		wait(0.1)
+	end
+end
+
+spawn(updateTime)
+
+Tab:AddLabel("Made By aabbaaii")
+
+Tab:AddButton({
+	Name = "Social Media Link",
+	Callback = function()
+setclipboard("https://guns.lol/aabbaaii")
+      	print("copied")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Discord Invite Link",
+	Callback = function()
+setclipboard("https://discord.gg/hnq9AGVMwq")
+      	print("Discord link copied")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Destroy NDS V1 Gui",
+	Callback = function(value)
+OrionLib:Destroy()
+      	print("Working")
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Teleports",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "Lobby Tower",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3-245.70091247558594, 194.09994506835938, 317.61468505859375)
+      	print("Teleported")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Center Tower",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-278.3592529296875, 179.1999969482422, 339.6979675292969)
+      	print("Teleported")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Game area",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-128.3460693359375, 47.10000228881836, 12.0118408203125)
+      	print("Teleported")
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Fe Scripts",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "Kawaii Manget Part",
+	Callback = function(value)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/CaseohCASEOH/Kawaiis/refs/heads/main/kawaii_Manget_Part.txt'))()
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+	Title = "Kawaii Is Working!";
+	Text = "Made by hellohellohell012321 and noraxd"})
+Duration = 10;
+      	print("Kawaii working")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "coming soon",
+	Callback = function(value)
+-- script here
+      	print("Working")
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Scripts",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+    Name = "Current Disaster",
+    Callback = function()
+        local survivalTag        
+        for _, obj in pairs(workspace:GetChildren()) do
+            if obj:FindFirstChild("SurvivalTag") then
+                survivalTag = obj.SurvivalTag.Value
+                break
+            end
+        end
+
+        if survivalTag then
+            OrionLib:MakeNotification({
+                Name = "CURRENT DISASTER",
+                Content = "DISASTER: " .. survivalTag,
+                Image = "rbxassetid://4483345998",
+                Time = 15
+            })
+        else
+            OrionLib:MakeNotification({
+                Name = "CURRENT DISASTER",
+                Content = "No disaster found",
+                Image = "rbxassetid://4483345998",
+            })
+        print("working")
+    end
+})
+
+Tab:AddButton({
+	Name = "Infinite yield",
+	Callback = function(value)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+      	print("inf yield executed")
+  	end
+})
+
+Tab:AddButton({
+	Name = "Leave game",
+	Callback = function(value)
+game.Players.LocalPlayer:Kick("you just left the game!")
+      	print("kicked")
+  	end
+})
+
+Tab:AddToggle({
+    Name = "Anti Fling (test)",
+    Default = false,
+    Callback = function(value)
+        antiFlingEnabled = value
+        if antiFlingEnabled then
+            print("Anti fling activated")
+        else
+            print("Anti fling deactivated")
+        end
+    end
+})
+
+game:GetService("RunService").Stepped:Connect(function()
+    local character = game.Players.LocalPlayer.Character
+    if character and antiFlingEnabled then
+        character.HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+        character.HumanoidRootPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+    end
+end)
+
+Tab:AddButton({
+    Name = "Reset",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        if player.Character then
+            player.Character:BreakJoints()
+        end
+        print("Character reseted")
+    end
+})
+
+OrionLib:Init()
