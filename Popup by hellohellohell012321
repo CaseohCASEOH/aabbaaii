@@ -1,124 +1,86 @@
+local gui = Instance.new("ScreenGui")
+gui.Name = "DiscordInviteGui"
+gui.ResetOnSpawn = false
+gui.Parent = game:GetService("CoreGui")
 
+local TweenService = game:GetService("TweenService")
 
-local G2L = {}
-G2L["1"] = Instance.new("ScreenGui", game:GetService("CoreGui"))
-G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling
-G2L["2"] = Instance.new("Frame", G2L["1"])
-G2L["2"]["BorderSizePixel"] = 0
-G2L["2"]["BackgroundColor3"] = Color3.fromRGB(68, 71, 75)
-G2L["2"]["Size"] = UDim2.new(0, 200, 0, 195)
-G2L["2"]["Position"] = UDim2.new(0.5, -100, 0.5, -97)
-G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["3"] = Instance.new("TextButton", G2L["2"])
-G2L["3"]["BorderSizePixel"] = 0
-G2L["3"]["TextSize"] = 23
-G2L["3"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
-G2L["3"]["BackgroundColor3"] = Color3.fromRGB(32, 35, 38)
-G2L["3"]["FontFace"] =
-    Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["3"]["Size"] = UDim2.new(0, 130, 0, 26)
-G2L["3"]["Name"] = [[close]]
-G2L["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["3"]["Text"] = [[Nope]]
-G2L["3"]["Position"] = UDim2.new(0.5, -65, 0.8, 0)
-G2L["4"] = Instance.new("TextButton", G2L["2"])
-G2L["4"]["TextWrapped"] = true
-G2L["4"]["BorderSizePixel"] = 0
-G2L["4"]["TextSize"] = 27
-G2L["4"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
-G2L["4"]["BackgroundColor3"] = Color3.fromRGB(116, 139, 220)
-G2L["4"]["FontFace"] =
-    Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["4"]["Size"] = UDim2.new(0, 152, 0, 30)
-G2L["4"]["Name"] = [[copy]]
-G2L["4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["4"]["Text"] = [[Copy Link]]
-G2L["4"]["Position"] = UDim2.new(0.5, -76, 0.6, 0)
-G2L["5"] = Instance.new("UICorner", G2L["4"])
-G2L["5"]["CornerRadius"] = UDim.new(0, 2)
-G2L["6"] = Instance.new("TextLabel", G2L["2"])
-G2L["6"]["TextWrapped"] = true
-G2L["6"]["BorderSizePixel"] = 0
-G2L["6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-G2L["6"]["TextSize"] = 30
-G2L["6"]["FontFace"] =
-    Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["6"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
-G2L["6"]["BackgroundTransparency"] = 1
-G2L["6"]["Size"] = UDim2.new(0, 200, 0, 61)
-G2L["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["6"]["Text"] = [[Join The Discord]]
-G2L["6"]["Name"] = [[join]]
-G2L["6"]["Position"] = UDim2.new(0.5, -100, 0, 25)
-G2L["7"] = Instance.new("UICorner", G2L["2"])
-G2L["7"]["CornerRadius"] = UDim.new(0, 4)
-G2L["8"] = Instance.new("ImageLabel", G2L["2"])
-G2L["8"]["BorderSizePixel"] = 0
-G2L["8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-G2L["8"]["Image"] = [[rbxassetid://0]]
-G2L["8"]["Size"] = UDim2.new(0, 73, 0, 75)
-G2L["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["8"]["BackgroundTransparency"] = 1
-G2L["8"]["Position"] = UDim2.new(0.695, -36, 0.21025, 0)
-G2L["9"] = Instance.new("ImageLabel", G2L["2"])
-G2L["9"]["BorderSizePixel"] = 0
-G2L["9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-G2L["9"]["Image"] = [[rbxassetid://0]]
-G2L["9"]["Size"] = UDim2.new(0, 100, 0, 66)
-G2L["9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["9"]["BackgroundTransparency"] = 1
-G2L["9"]["Position"] = UDim2.new(0.29, -50, 0.25641, 0)
-G2L["a"] = Instance.new("LocalScript", G2L["3"]) -- Close button script
-G2L["b"] = Instance.new("LocalScript", G2L["4"]) -- Copy button script
-
-local function closeGui()
-    local TweenService = game:GetService("TweenService")
-    local frame = G2L["2"]
-    local fadeOutTime = 2.5
-    
-    for _, descendant in ipairs(frame:GetDescendants()) do
-        if descendant:IsA("GuiObject") then
-            local tweenInfo = {}
-            if descendant:IsA("TextLabel") or descendant:IsA("TextButton") then
-                tweenInfo.TextTransparency = 1
-            end
-            if descendant:IsA("ImageLabel") or descendant:IsA("ImageButton") then
-                tweenInfo.ImageTransparency = 1
-            end
-            tweenInfo.BackgroundTransparency = 1
-            local fadeTween = TweenService:Create(descendant, TweenInfo.new(fadeOutTime), tweenInfo)
-            fadeTween:Play()
-        end
+local function createInstance(className, properties)
+    local obj = Instance.new(className)
+    for prop, value in pairs(properties) do
+        obj[prop] = value
     end
-
-    local frameTween = TweenService:Create(frame, TweenInfo.new(fadeOutTime), {BackgroundTransparency = 1})
-    frameTween:Play()
-    frameTween.Completed:Connect(function()
-        frame.Visible = false
-    end)
-    
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/CaseohCASEOH/Gui/refs/heads/main/ABAUIHUB'))()
+    return obj
 end
 
-G2L["3"].MouseButton1Click:Connect(closeGui)
+local slideDuration = math.random(15, 25) / 5
 
-local function onCopyButtonClicked()
-    local link = "https://discord.gg/hnq9AGVMwq"
-    setclipboard(link)
+local mainFrame = createInstance("Frame", {
+    Size = UDim2.new(0, 250, 0, 240),
+    Position = UDim2.new(0.5, -125, 0.5, -120),
+    BackgroundColor3 = Color3.fromRGB(64, 67, 73),
+    Parent = gui,
+})
+
+createInstance("UICorner", { Parent = mainFrame })
+createInstance("UIStroke", {
+    ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+    Color = Color3.fromRGB(40, 43, 48),
+    Thickness = 4,
+    Parent = mainFrame,
+})
+
+mainFrame.Position = UDim2.new(-1, 0, 0.5, -120)
+TweenService:Create(mainFrame, TweenInfo.new(slideDuration, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -125, 0.5, -120)}):Play()
+
+local title = createInstance("TextLabel", {
+    Size = UDim2.new(1, 0, 0, 38),
+    Position = UDim2.new(0, 0, 0, 5),
+    BackgroundTransparency = 1,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    Font = Enum.Font["Highway"],
+    TextSize = 24,
+    TextScaled = true,
+    Text = "Join Our Discord Server!",
+    Parent = mainFrame,
+})
+
+local imageDisplay = createInstance("ImageLabel", {
+    Size = UDim2.new(0, 150, 0, 100),
+    Position = UDim2.new(0.6, -100, 0.5, -60),
+    BackgroundTransparency = 1,
+    Image = "rbxassetid://87615026713140",
+    Parent = mainFrame,
+})
+
+local buttonsData = {
+    { text = "Copy Link", position = UDim2.new(0.8, -70, 1, -50), action = function() setclipboard("https://discord.gg/hnq9AGVMwq") end },
+    { text = "Nope", position = UDim2.new(0.35, -70, 1, -50), action = function()
+        gui:Destroy()
+    end },
+}
+
+for _, btnData in ipairs(buttonsData) do
+    local button = createInstance("TextButton", {
+        Size = UDim2.new(0, 100, 0, 40),
+        Position = btnData.position,
+        BackgroundColor3 = (btnData.text == "Copy Link" and Color3.fromRGB(114, 137, 218) or Color3.fromRGB(70, 73, 78)),
+        TextColor3 = Color3.fromRGB(0, 0, 0),
+        Font = Enum.Font["Highway"],
+        TextScaled = true,
+        Text = btnData.text,
+        Parent = mainFrame,
+    })
+
+    createInstance("UICorner", { Parent = button })
+    createInstance("UIStroke", {
+        ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+        Color = (btnData.text == "Copy Link" and Color3.fromRGB(90, 105, 140) or Color3.fromRGB(50, 53, 58)),
+        Thickness = 4,
+        Parent = button,
+    })
+
+    button.MouseButton1Click:Connect(btnData.action)
 end
 
-G2L["4"].MouseButton1Click:Connect(onCopyButtonClicked)
-
-local function popOutFrame()
-    local TweenService = game:GetService("TweenService")
-    local frame = G2L["2"]
-    local popOutTime = 1
-    frame.Size = UDim2.new(0, 0, 0, 0)
-    frame.Visible = true
-    local tweenInfo = TweenInfo.new(popOutTime, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out)
-    local targetSize = UDim2.new(0, 200, 0, 195)
-    local popOutTween = TweenService:Create(frame, tweenInfo, {Size = targetSize})
-    popOutTween:Play()
-end
-
-task.spawn(popOutFrame)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/CaseohCASEOH/Gui/refs/heads/main/ABAUIHUB'))()
