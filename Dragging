@@ -1,5 +1,5 @@
--- Change parent next to LocalScript called papaparent to your frame name
--- do not touch everything, you can change dragSpeed and parent
+-- Change parent next to LocalScript called papaparent to your element name
+-- do not touch everything, you can change dragSpeed and parent name
 -- dragging script is not mine, it's from roblox studio toolbox called DragScript
 local function HTCUAM_fake_script()
     local script = Instance.new('LocalScript', papaparent)
