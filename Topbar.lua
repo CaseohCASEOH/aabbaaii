@@ -1,3 +1,4 @@
+-- credit me if you modify this source
 local screengui = Instance.new("ScreenGui", game:GetService("CoreGui"))
 local frame3 = Instance.new("Frame", screengui)
 local frame2 = Instance.new("Frame", frame3)
