@@ -1,0 +1,16 @@
+return function(p)
+    local function getInst(path)
+        local c = game
+        for part in path:gmatch("[^%.]+") do
+            c = c:FindFirstChild(part)
+            if not c then return nil end
+        end
+        return c
+    end
+
+    local s = getInst(p)
+    if not s then warn("LocalScript not found) end
+    if not s:IsA("LocalScript") then warn("instance is not a LocalScript") end
+
+    setclipboard(s.Source)
+end
