@@ -1,4 +1,4 @@
-local allowed = {
+local whitelist = {
     ["hwid_1"] = true,
     ["hwid_2"] = true,
 }
