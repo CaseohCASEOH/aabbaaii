@@ -1,5 +1,5 @@
 local whitelist = {
-    ["hwid_1"] = true,
+    ["g52glw6gwwdof0xxciixyjzz6yll6fxr043fnfv1q08c92g441"] = true,
     ["hwid_2"] = true,
 }
 
