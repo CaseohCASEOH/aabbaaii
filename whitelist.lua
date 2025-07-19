@@ -16,7 +16,7 @@ end
 local rbx = generation(game:GetService("RbxAnalyticsService"):GetClientId())
 
 local whitelist = {
-    ["hwid_1"] = true,
+    ["ghijklmnopqrstuvwxyz012345lmnopqrstuvwwdefghijklmnofghijklmnopqrstuvwxyz0xcdefghiijklmnopqrstuvwxzl01234vwxyz01qrstuvwxyz0ghijklmnopqrstuvwxyz01234mnopqrstuvwxyz012345674567812345678wxyz012345678bcdefghijklmnopqrsbcdefghijkldefghijklmnopqbcqrstopqrstnopqrstuvwhijklmnopqrstuvwxyz0123"] = true,
     ["hwid_2"] = true,
 }
 
