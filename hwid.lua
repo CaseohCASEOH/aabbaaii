@@ -13,14 +13,20 @@ local function generation(device)
     return table.concat(result)
 end
 
-local real = generation(game:GetService("RbxAnalyticsService"):GetClientId())
+local id = game:GetService("RbxAnalyticsService"):GetClientId()
+if not id then
+    game.Players.LocalPlayer:Kick("Failed to get HWID")
+    return
+end
+
+local real = generation(id)
 local path = "hwid.key"
 
 if isfile(path) then
     local current = readfile(path)
     if current ~= real then
         writefile(path, real)
-        game.Players.LocalPlayer:Kick("Do Not Spoof HWID)
+        game.Players.LocalPlayer:Kick("Don't spoof HWID. File was reset.")
         return
     end
 else
