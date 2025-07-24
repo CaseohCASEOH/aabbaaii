@@ -15,11 +15,5 @@ end
 
 local place = 18695865484
 if game.PlaceId ~= place then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Unsupported Game!",
-        Text = "Joining Supported Game...",
-        Duration = 2.9
-    })
-    task.wait(3)
-    game:GetService("TeleportService"):Teleport(place, game:GetService("Players").LocalPlayer)
+    game:GetService("Players").LocalPlayer:Kick("Unsupported Game, Only Supported Game: Flex Your Ping And FPS!")
 end
