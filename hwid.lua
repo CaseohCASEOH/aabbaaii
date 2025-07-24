@@ -15,7 +15,7 @@ end
 
 local id = game:GetService("RbxAnalyticsService"):GetClientId()
 if not id then
-    game.Players.LocalPlayer:Kick("Failed to get HWID")
+    game.Players.LocalPlayer:Kick("HWID Error")
     return
 end
 
@@ -26,7 +26,7 @@ if isfile(path) then
     local current = readfile(path)
     if current ~= real then
         writefile(path, real)
-        game.Players.LocalPlayer:Kick("Don't spoof HWID. File was reset.")
+        game.Players.LocalPlayer:Kick("You Were Kicked Due To Spoofing HWID Or Roblox Reset)
         return
     end
 else
