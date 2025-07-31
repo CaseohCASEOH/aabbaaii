@@ -13,7 +13,7 @@ if blacklist[hwid] then
     game.Players.LocalPlayer:Kick("Banned")
 end
 
-local place = 18695865484
+local place = 1
 if game.PlaceId ~= place then
-    game:GetService("Players").LocalPlayer:Kick("Unsupported Game, Only Supported Game: Flex Your Ping And FPS!")
+    game:GetService("Players").LocalPlayer:Kick("Patched")
 end
