@@ -9,10 +9,6 @@ if not isfile("hwid.key") then
 end
 
 local hwid = readfile("hwid.key")
-if blacklist[hwid] then
-    game.Players.LocalPlayer:Kick("Banned")
+if not blacklist[hwid] then
+    game.Players.LocalPlayer:Kick("Patched")
 end
-
-task.wait(1)
-
-game:GetService("Players").LocalPlayer:Kick("Patched")
