@@ -13,7 +13,6 @@ if blacklist[hwid] then
     game.Players.LocalPlayer:Kick("Banned")
 end
 
-local place = 1
-if game.PlaceId ~= place then
-    game:GetService("Players").LocalPlayer:Kick("Patched")
-end
+task.wait(1)
+
+game:GetService("Players").LocalPlayer:Kick("Patched")
