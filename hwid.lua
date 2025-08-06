@@ -26,7 +26,7 @@ if isfile(path) then
     local current = readfile(path)
     if current ~= real then
         writefile(path, real)
-        game.Players.LocalPlayer:Kick("You Were Kicked Due To Spoofing HWID Or Roblox Reset")
+        game.Players.LocalPlayer:Kick("You Were Kicked Due To Spoofing HWID Or Factory Reset/New Device")
         return
     end
 else
