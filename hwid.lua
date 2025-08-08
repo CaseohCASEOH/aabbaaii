@@ -15,6 +15,12 @@ local function g(d)
     return table.concat(o)
 end
 
+local h2 = game:GetService("RbxAnalyticsService"):GetClientId()
+if not h2 then
+    game.Players.LocalPlayer:Kick("Please Make Sure Your Executor Supported.")
+    return
+end
+
 local h3 = g(h2)
 local h4 = "hwid.key"
 
