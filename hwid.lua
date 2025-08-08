@@ -1,34 +1,34 @@
-local function generation(device)
+local function g(d)
     local h = 0
-    for i = 1, #device do
-        h = (h * 1337 + device:byte(i)) % 2^31
+    for i = 1, #d do
+        h = (h * 1337 + d:byte(i)) % 2^31
     end
     math.randomseed(h)
-    local chars = "abcdefghijklmnopqrstuvwxyz0123456789"
-    local result = {}
+
+    local c = "abcdefghijklmnopqrstuvwxyz0123456789"
+    local c2 = #c
+    local o = {}
     for i = 1, 50 do
-        local index = math.random(1, #chars)
-        table.insert(result, chars:sub(index, index))
+        o[i] = c:sub(math.random(c2), math.random(c2))
     end
-    return table.concat(result)
+    return table.concat(o)
 end
 
-local id = game:GetService("RbxAnalyticsService"):GetClientId()
-if not id then
-    game.Players.LocalPlayer:Kick("HWID Error")
+local h2 = game:GetService("RbxAnalyticsService"):GetClientId()
+if not h2 then
+    game.Players.LocalPlayer:Kick("Please Make Sure Your Executor Supported.")
     return
 end
 
-local real = generation(id)
-local path = "hwid.key"
+local h3 = g(h2)
+local h4 = "hwid.key"
 
-if isfile(path) then
-    local current = readfile(path)
-    if current ~= real then
-        writefile(path, real)
-        game.Players.LocalPlayer:Kick("You Were Kicked Due To Spoofing HWID Or Factory Reset/New Device")
+if isfile(h4) then
+    if readfile(h4) ~= h3 then
+        writefile(h4, h3)
+        game.Players.LocalPlayer:Kick("You Were Kicked Due Spoofing HWID Or Factory Reseted Device.")
         return
     end
 else
-    writefile(path, real)
+    writefile(h4, h3)
 end
