@@ -9,15 +9,10 @@ local function g(d)
     local c2 = #c
     local o = {}
     for i = 1, 50 do
-        o[i] = c:sub(math.random(c2), math.random(c2))
+        local i2 = math.random(c2)
+        o[i] = c:sub(i2, i2)
     end
     return table.concat(o)
-end
-
-local h2 = game:GetService("RbxAnalyticsService"):GetClientId()
-if not h2 then
-    game.Players.LocalPlayer:Kick("Please Make Sure Your Executor Supported.")
-    return
 end
 
 local h3 = g(h2)
