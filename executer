@@ -1,8 +1,0 @@
-local support = {[123456789] = "https://raw.githubusercontent.com/YourUser/Repo/main/Script1.lua",[987654321] = "https://raw.githubusercontent.com/YourUser/Repo/main/Script2.lua",[555555555] = "https://raw.githubusercontent.com/YourUser/Repo/main/Script3.lua",}
-local place = game.PlaceId
-local script = support[place]
-if script game then
-    loadstring(game:HttpGet(url))()
-else
-
-end
